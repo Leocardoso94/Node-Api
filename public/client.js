@@ -1,26 +1,90 @@
-// client-side js
-// run by the browser each time your view template is loaded
+const url = 'http://localhost:8080/topicos';
 
-// by default, you've got jQuery,
-// add other scripts at the bottom of index.html
+$(function () {
 
-$(function() {
-  console.log('hello world :o');
-  
-  $.get('/dreams', function(dreams) {
-    dreams.forEach(function(dream) {
-      $('<li></li>').text(dream).appendTo('ul#dreams');
-    });
-  });
+	hideModal();
+	getTopicos();
 
-  $('form').submit(function(event) {
-    event.preventDefault();
-    var dream = $('input').val();
-    $.post('/dreams?' + $.param({dream: dream}), function() {
-      $('<li></li>').text(dream).appendTo('ul#dreams');
-      $('input').val('');
-      $('input').focus();
-    });
-  });
+	$('table').on('click', '.delete', function (event) {
+		event.preventDefault();
+		const id = $(this).val();
 
+		if (confirm("Você tem certeza?"))
+			$.ajax({
+				url: url + '/' + id,
+				type: 'DELETE',
+				success: function () {
+					$('tbody').html('');
+					getTopicos();
+				}
+			});
+	});
+
+	$('table').on('click', '.update', function (event) {
+		event.preventDefault();
+		const id = $(this).val();
+
+		$('.modal').show();
+		$('.modal-wrapper').show();
+		// $.ajax({
+		// 	url: url + '/' + id,
+		// 	type: 'DELETE',
+		// 	success: function () {
+		// 		$('tbody').html('');
+		// 		getTopicos();
+		// 	}
+		// });
+	});
+
+	$('.modal-wrapper').click(function () {
+		hideModal();
+	});
+
+	$('form').submit(function (event) {
+		event.preventDefault();
+		const id = $('#id').val();
+		const descricao = $('#descricao').val();
+		const nome = $('#nome').val();
+
+		const topico = { id, nome, descricao };
+
+		$.ajax({
+			type: 'post',
+			url: url,
+			data: JSON.stringify(topico),
+			contentType: 'application/json; charset=utf-8',
+			traditional: true,
+			success: function () {
+				$('tbody').prepend(makeTR(topico));
+			}
+		});
+	});
 });
+
+
+function makeTR(topico) {
+	const template = `
+	<tr>
+		<td>${topico.id}</td>
+		<td>${topico.nome}</td>
+		<td>${topico.descricao}</td>
+		<td><button value="${topico.id}" class="delete">Remover</button></td>
+		<td><button value="${topico.id}" class="update">Alterar</></td>
+	</tr>
+	`;
+
+	return template;
+}
+
+function getTopicos() {
+	$.get(url, function (topicos) {
+		topicos.forEach(function (topico) {
+			$('tbody').prepend(makeTR(topico));
+		});
+	});
+}
+function hideModal() {
+	$('.modal').hide();
+	$('.modal-wrapper').hide();
+}
+

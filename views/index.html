@@ -9,46 +9,57 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Welcome to Glitch!</title>
-    <meta name="description" content="A cool thing made with Glitch">
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/style.css">
-  </head>
-  <body>
-    <header>
-      <h1>
-        A Dream of the Future
-      </h1>
-    </header>
 
-    <main>
-      <p class="bold">Oh hi,</p>
-      <p>Tell me your hopes and dreams:</p>
-      <form>
-        <input type="text" maxlength="100" placeholder="Dreams!">
-        <button type="submit">Submit</button>
-      </form>
-      <section class="dreams">
-        <ul id="dreams">
-        </ul>
-      </section>
-    </main>
+<head>
+  <title>Welcome to Glitch!</title>
+  <meta name="description" content="A cool thing made with Glitch">
+  <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/style.css">
+</head>
 
-    <footer>
-      <a href="https://glitch.com">
-        Remix this in Glitch
-      </a>
-    </footer>
+<body>
+  <div class="modal-wrapper">
+    <div class="modal">
+      <h1>Modal Title</h1>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+    </div>
+  </div>
+  <h1>
+    Topicos
+  </h1>
+  <main>
 
-    <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
-    <script src="/client.js"></script>
+    </section>
+    <p class="bold">Olá ,</p>
+    <p>Caso deseje inserir novos tópicos:</p>
+    <form>
+      <input required type="text" maxlength="100" id="id" name="id" placeholder="id!">
+      <input required type="text" maxlength="100" id="nome" name="nome" placeholder="Nome!">
+      <input required type="text" maxlength="100" id="descricao" name="descricao" placeholder="Descrição!">
+      <button type="submit">Enviar</button>
+    </form>
+    <p>Para alterar apenas clique no registro e edite seu valor e clique em alterar</p>
+    <section class="topicos">
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
 
-  </body>
+      <!-- Your web-app is https, so your scripts need to be too -->
+      <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+        crossorigin="anonymous"></script>
+      <script src="/client.js"></script>
+
+</body>
+
 </html>

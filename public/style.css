@@ -1,82 +1,174 @@
-/* styles */
-/* called by your view template */
-
-/* You might want to try something fancier: */
-/* less: http://lesscss.org/ */
-
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Slabo 27px', serif;
 }
 
 body {
-  font-family: helvetica, arial, sans-serif;
-  margin: 25px;
+    font-family: helvetica, arial, sans-serif;
+    margin: 25px;
 }
 
 h1 {
-  font-weight: bold;
-  color: pink;
+    font-weight: bold;
+    color: blue;
+    text-align: center;
+}
+
+main {
+    width: 1280px;
+    display: block;
+    margin: auto;
 }
 
 .bold {
-  font-weight: bold;
-}
-
-p {
-  max-width: 600px;
+    font-weight: bold;
 }
 
 form {
-  margin-bottom: 25px;
-  padding: 15px;
-  background-color: cyan;
-  display: inline-block;
-  width: 100%;
-  max-width: 340px;
-  border-radius: 3px;
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: cyan;
+    display: inline-block;
+    width: 100%;
+    max-width: 340px;
+    border-radius: 3px;
 }
 
 input {
-  display: block;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-  font-size: 16px;
+    display: block;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    font-size: 16px;
 }
 
 button {
-  font-size: 16px;
-  border-radius: 3px;
-  background-color: lightgrey;
-  border: 1px solid grey;
-  box-shadow: 2px 2px teal;
-  cursor: pointer;
+    font-size: 16px;
+    border-radius: 3px;
+    background-color: lightgrey;
+    border: 1px solid grey;
+    box-shadow: 2px 2px teal;
+    cursor: pointer;
 }
 
 button:hover {
-  background-color: yellow;
+    background-color: yellow;
 }
 
 button:active {
-  box-shadow: none;
+    box-shadow: none;
 }
 
 li {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 footer {
-  margin-top: 50px;
-  padding-top: 25px;
-  border-top: 1px solid lightgrey;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid lightgrey;
 }
 
-footer > a {
-  color: #BBBBBB;
+footer>a {
+    color: #BBBBBB;
 }
 
 .nicejob {
-  text-decoration: line-through;
+    text-decoration: line-through;
+}
+
+table {
+    width: 100%;
+    background-color: transparent;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+thead {
+    color: #FF0000;
+}
+
+table>tbody>tr {
+    position: relative;
+}
+
+table>tbody>tr>td,
+table>tbody>tr>th,
+table>tfoot>tr>td,
+table>tfoot>tr>th,
+table>thead>tr>td,
+table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    width: 33%;
+}
+
+table tr:first-child th {
+    border-top: none;
+}
+
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 999;
+  background-color:rgba(0,0,0,.2)
+}
+.modal-wrapper:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.modal {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  
+  font-family:Arial,sans-serif;
+  font-size:12px;
+  
+  -moz-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .5);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, .5);
+  
+  -moz-border-radius:   	20px;
+  -webkit-border-radius: 	20px;
+  border-radius: 					20px;
+  -khtml-border-radius: 	20px;
+  
+  background-color:white;
+
+  z-index: 1000;
+}
+
+.modal > h1{
+  padding:8px;
+  margin:-10px -10px 0;
+  font-family:verdana,sans-serif;
+  font-size:18px;
+  color:white;
+  
+  -moz-border-radius: 		20px 20px 0 0;
+  -webkit-border-radius: 	20px 20px 0 0;
+  border-radius: 					20px 20px 0 0;
+  -khtml-border-radius: 	20px 20px 0 0;
+  
+  text-shadow:2px 2px 0 rgba(0,0,0,.3);
+  
+  background-color:#c00;
 }
