@@ -9,13 +9,12 @@ $(function () {
 		event.preventDefault();
 		const id = $(this).val();
 
-		if (confirm("Você tem certeza?"))
+		if (confirm('Você tem certeza?'))
 			$.ajax({
 				url: url + '/' + id,
 				type: 'DELETE',
 				success: function () {
-					$('tbody').html('');
-					getTopicos();
+					resetarTabela();
 				}
 			});
 	});
@@ -26,21 +25,43 @@ $(function () {
 
 		$('.modal').show();
 		$('.modal-wrapper').show();
-		// $.ajax({
-		// 	url: url + '/' + id,
-		// 	type: 'DELETE',
-		// 	success: function () {
-		// 		$('tbody').html('');
-		// 		getTopicos();
-		// 	}
-		// });
+
+		$.get(url + '/' + id, function (topico) {
+			$('#idUpdate').val(topico.id);
+			$('#idAnterior').val(topico.id);
+			$('#descricaoUpdate').val(topico.descricao);
+			$('#nomeUpdate').val(topico.nome);
+		});
+		// $.
+	});
+
+	$('#formUpdate').submit(function (event) {
+		event.preventDefault();
+		const id = $('#idUpdate').val();
+		const idAnterior = $('#idAnterior').val();
+		const descricao = $('#descricaoUpdate').val();
+		const nome = $('#nomeUpdate').val();
+
+		const topico = { id, nome, descricao };
+
+		$.ajax({
+			type: 'put',
+			url: url + '/' + idAnterior,
+			data: JSON.stringify(topico),
+			contentType: 'application/json; charset=utf-8',
+			traditional: true,
+			success: function () {
+				resetarTabela();
+				hideModal();
+			}
+		});
 	});
 
 	$('.modal-wrapper').click(function () {
 		hideModal();
 	});
 
-	$('form').submit(function (event) {
+	$('#formAdd').submit(function (event) {
 		event.preventDefault();
 		const id = $('#id').val();
 		const descricao = $('#descricao').val();
@@ -55,6 +76,10 @@ $(function () {
 			contentType: 'application/json; charset=utf-8',
 			traditional: true,
 			success: function () {
+				$('#id').val('');
+				$('#descricao').val('');
+				$('#nome').val('');
+
 				$('tbody').prepend(makeTR(topico));
 			}
 		});
@@ -86,5 +111,10 @@ function getTopicos() {
 function hideModal() {
 	$('.modal').hide();
 	$('.modal-wrapper').hide();
+}
+
+function resetarTabela() {
+	$('tbody').html('');
+	getTopicos();
 }
 

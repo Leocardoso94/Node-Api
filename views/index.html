@@ -21,11 +21,16 @@
 </head>
 
 <body>
-  <div class="modal-wrapper">
-    <div class="modal">
-      <h1>Modal Title</h1>
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-    </div>
+  <div class="modal-wrapper"></div>
+  <div class="modal">
+    <h1>Alterar</h1>
+    <form id="formUpdate">
+      <input type="hidden"id="idAnterior" name="">
+      <input required type="text" maxlength="100" id="idUpdate" value="" placeholder="id!">
+      <input required type="text" maxlength="100" id="nomeUpdate" value="" placeholder="Nome!">
+      <input required type="text" maxlength="100" id="descricaoUpdate" value="" placeholder="Descrição!">
+      <button type="submit">Alterar</button>
+    </form>
   </div>
   <h1>
     Topicos
@@ -35,7 +40,7 @@
     </section>
     <p class="bold">Olá ,</p>
     <p>Caso deseje inserir novos tópicos:</p>
-    <form>
+    <form id="formAdd">
       <input required type="text" maxlength="100" id="id" name="id" placeholder="id!">
       <input required type="text" maxlength="100" id="nome" name="nome" placeholder="Nome!">
       <input required type="text" maxlength="100" id="descricao" name="descricao" placeholder="Descrição!">
